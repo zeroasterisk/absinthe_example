@@ -43,7 +43,7 @@ defmodule Absinthe.Plug do
     do_call(conn, input, variables, context, config)
   end
 
-  def do_call(conn, input, variables, context, %{schema: schema, adapter: adapter, json_codec: json_codec}}) do
+  def do_call(conn, input, variables, context, %{schema: schema, adapter: adapter, json_codec: json_codec}) do
     with {:ok, doc} <- Absinthe.parse(input),
       :ok <- validate_single_operation(doc),
       :ok <- validate_http_method(conn, doc),
